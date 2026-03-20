@@ -2,6 +2,7 @@
 // CENG 454 HW1: Sky-High Prototype
 // Author: [FIRAT YALDIZ] | Student ID: [230446045]
 
+
 using UnityEngine;
 
 public class FlightController : MonoBehaviour
@@ -25,19 +26,24 @@ public class FlightController : MonoBehaviour
 
     void Update()
     {
+
         HandleRotation();
         HandleThrust();
+
     }
 
     private void HandleRotation()
     {
         // TODO (Task 3-C):
         
+
         // Pitch
         float upDownInput = Input.GetAxis("Vertical");
         transform.Rotate( Vector3.right * upDownInput*pitchSpeed * Time.deltaTime);
+       
         // left and right rotation (yaw)
         float leftRightInput = Input.GetAxis("Horizontal");
+
         transform.Rotate( Vector3.up * leftRightInput *yawSpeed * Time.deltaTime) ;
         // Roll
         float rollValue = 0f ;
@@ -45,17 +51,22 @@ public class FlightController : MonoBehaviour
         {
             rollValue = 1f; // turn left
         }
+       
         else if (Input.GetKey(KeyCode.E))
         {
-            rollValue = -1f; // turn right
+            rollValue = -1f; //turn right
+
         }
         
         transform.Rotate(Vector3.forward* rollValue * rollSpeed *Time.deltaTime);
+
+
     }
 
     private void HandleThrust()
     {
-        // TODO (Task 3-D):
+        
+        // TODO (Task 3-D) :
         if (Input.GetKey(KeyCode.Space))
         {
             transform.Translate(Vector3.forward * thrustSpeed * Time.deltaTime);
